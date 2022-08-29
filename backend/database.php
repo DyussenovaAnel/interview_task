@@ -1,22 +1,14 @@
 <?php
-class Database {
+$servername = "localhost";
+$username = "root";
+$password = "QWEasd123!";
 
-    private $host = "localhost";
-    private $db_name = "php_oop";
-    private $username = "root";
-    private $password = "root";
-    public $conn;
 
-    public function getConnection() {
-        $this->conn = null;
+$conn = new mysqli($servername, $username, $password);
 
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-        } catch(PDOException $exception) {
-            echo "Ошибка соединения: " . $exception->getMessage();
-        }
 
-        return $this->conn;
-    }
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
+echo "Connected successfully";
 ?>
